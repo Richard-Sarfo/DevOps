@@ -8,7 +8,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(me
 logger = logging.getLogger(__name__)
 
 def extract_weather(lat=6.6271, lon=-1.6278, days=7):
-    """Extract last N days historical weather from Open-Meteo API (Kumasi default)"""
+    """Extract last N days historical weather from Open-Meteo API (Kumasi)"""
     end = datetime.now().date()
     start = end - timedelta(days=days - 1)
     url = (
