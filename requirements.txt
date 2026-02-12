@@ -1,0 +1,5 @@
+requests==2.32.3
+pandas==2.2.3
+sqlalchemy==2.0.35
+pytest==8.3.3
+ruff==0.7.0          
