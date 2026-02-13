@@ -1,0 +1,245 @@
+2026-02-13 08:25:59,177 [__main__] [INFO] ================================================================================
+2026-02-13 08:25:59,178 [__main__] [INFO] Starting Pipeline Execution
+2026-02-13 08:25:59,179 [__main__] [INFO] ================================================================================
+2026-02-13 08:25:59,180 [__main__] [INFO] --- EXTRACT PHASE ---
+2026-02-13 08:25:59,180 [src.Extract] [DEBUG] Starting extraction for lat=6.6271, lon=-1.6278, days=3
+2026-02-13 08:25:59,181 [src.Extract] [INFO] Fetching historical weather data from 2026-02-11 to 2026-02-13...
+2026-02-13 08:25:59,181 [src.Extract] [DEBUG] API URL: https://archive-api.open-meteo.com/v1/archive?latitude=6.6271&longitude=-1.6278&start_date=2026-02-11&end_date=2026-02-13&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=Africa/Accra
+2026-02-13 08:25:59,191 [urllib3.connectionpool] [DEBUG] Starting new HTTPS connection (1): archive-api.open-meteo.com:443
+2026-02-13 08:26:00,543 [urllib3.connectionpool] [DEBUG] https://archive-api.open-meteo.com:443 "GET /v1/archive?latitude=6.6271&longitude=-1.6278&start_date=2026-02-11&end_date=2026-02-13&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=Africa/Accra HTTP/1.1" 200 None
+2026-02-13 08:26:00,544 [src.Extract] [DEBUG] API response status: 200
+2026-02-13 08:26:00,601 [src.Extract] [DEBUG] Columns available: ['time', 'temperature_2m_max', 'temperature_2m_min', 'precipitation_sum']
+2026-02-13 08:26:00,603 [src.Extract] [DEBUG] DataFrame shape: (3, 4), dtypes:
+date              object
+temp_max         float64
+temp_min         float64
+precipitation    float64
+dtype: object
+2026-02-13 08:26:00,606 [__main__] [INFO] --- TRANSFORM PHASE ---
+2026-02-13 08:26:00,607 [src.Transform] [DEBUG] Starting transformation on DataFrame with shape (3, 4)
+2026-02-13 08:26:00,607 [src.Transform] [DEBUG] Input columns: ['date', 'temp_max', 'temp_min', 'precipitation']
+2026-02-13 08:26:00,608 [src.Transform] [DEBUG] Input dtypes:
+date              object
+temp_max         float64
+temp_min         float64
+precipitation    float64
+dtype: object
+2026-02-13 08:26:00,608 [src.Transform] [DEBUG] Created DataFrame copy
+2026-02-13 08:26:00,610 [src.Transform] [DEBUG] Calculated temp_avg: min=27.75, max=28.80, mean=28.13
+2026-02-13 08:26:00,619 [src.Transform] [DEBUG] Temperature distribution:
+{'Hot': 3, 'Cold': 0, 'Mild': 0}
+2026-02-13 08:26:00,621 [src.Transform] [DEBUG] Filled 0 null precipitation values with 0
+2026-02-13 08:26:00,628 [src.Transform] [DEBUG] Converted dates; range: 2026-02-11 00:00:00 to 2026-02-13 00:00:00
+2026-02-13 08:26:00,632 [src.Transform] [DEBUG] Output columns: ['date', 'temp_max', 'temp_min', 'precipitation', 'temp_avg', 'temp_category']
+2026-02-13 08:26:00,634 [src.Transform] [DEBUG] Output dtypes:
+date             datetime64[ns]
+temp_max                float64
+temp_min                float64
+precipitation           float64
+temp_avg                float64
+temp_category          category
+dtype: object
+2026-02-13 08:26:00,637 [__main__] [INFO] --- LOAD PHASE ---
+2026-02-13 08:26:00,637 [src.Load] [DEBUG] Starting load operation with data type: DataFrame
+2026-02-13 08:26:00,638 [src.Load] [DEBUG] Using provided DataFrame with shape (3, 6)
+2026-02-13 08:26:00,638 [src.Load] [DEBUG] DataFrame before processing: shape=(3, 6), columns=['date', 'temp_max', 'temp_min', 'precipitation', 'temp_avg', 'temp_category']
+2026-02-13 08:26:00,639 [src.Load] [DEBUG] Date range: 2026-02-11 00:00:00 to 2026-02-13 00:00:00
+2026-02-13 08:26:00,641 [src.Load] [DEBUG] DataFrame ready for insert: shape=(3, 6), dtypes:
+date             datetime64[ns]
+temp_max                float64
+temp_min                float64
+precipitation           float64
+temp_avg                float64
+temp_category          category
+dtype: object
+2026-02-13 08:26:00,645 [src.Load] [DEBUG] Weather table exists: True
+2026-02-13 08:26:00,664 [src.Load] [DEBUG] Total rows in weather table after load: 3
+2026-02-13 08:26:00,668 [__main__] [INFO] --- VERIFICATION PHASE ---
+2026-02-13 08:26:00,670 [__main__] [INFO] Tables in database: ['weather']
+2026-02-13 08:26:00,672 [__main__] [INFO] Total rows in weather table: 21
+2026-02-13 08:26:00,687 [__main__] [DEBUG] Sample (first 5 rows):
+                         date  temp_max  ...  temp_avg  temp_category
+0  2026-02-10 00:00:00.000000      32.0  ...     26.95            Hot
+1  2026-02-10 00:00:00.000000      32.0  ...     26.95            Hot
+2  2026-02-10 00:00:00.000000      32.0  ...     26.95            Hot
+3  2026-02-10 00:00:00.000000      32.0  ...     26.95            Hot
+4  2026-02-10 00:00:00.000000      32.0  ...     26.95            Hot
+
+[5 rows x 6 columns]
+2026-02-13 08:26:00,690 [__main__] [INFO] ================================================================================
+2026-02-13 08:26:00,691 [__main__] [INFO] Pipeline Execution Completed Successfully
+2026-02-13 08:26:00,691 [__main__] [INFO] ================================================================================
+2026-02-13 08:28:41,535 [__main__] [INFO] ================================================================================
+2026-02-13 08:28:41,536 [__main__] [INFO] Starting Pipeline Execution
+2026-02-13 08:28:41,536 [__main__] [INFO] ================================================================================
+2026-02-13 08:28:41,536 [__main__] [INFO] --- EXTRACT PHASE ---
+2026-02-13 08:28:41,537 [src.Extract] [DEBUG] Starting extraction for lat=6.6271, lon=-1.6278, days=3
+2026-02-13 08:28:41,537 [src.Extract] [INFO] Fetching historical weather data from 2026-02-11 to 2026-02-13...
+2026-02-13 08:28:41,537 [src.Extract] [DEBUG] API URL: https://archive-api.open-meteo.com/v1/archive?latitude=6.6271&longitude=-1.6278&start_date=2026-02-11&end_date=2026-02-13&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=Africa/Accra
+2026-02-13 08:28:41,540 [urllib3.connectionpool] [DEBUG] Starting new HTTPS connection (1): archive-api.open-meteo.com:443
+2026-02-13 08:28:42,582 [urllib3.connectionpool] [DEBUG] https://archive-api.open-meteo.com:443 "GET /v1/archive?latitude=6.6271&longitude=-1.6278&start_date=2026-02-11&end_date=2026-02-13&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=Africa/Accra HTTP/1.1" 200 None
+2026-02-13 08:28:42,583 [src.Extract] [DEBUG] API response status: 200
+2026-02-13 08:28:42,586 [src.Extract] [INFO] [OK] Successfully extracted 3 days of weather data
+2026-02-13 08:28:42,587 [src.Extract] [DEBUG] Columns available: ['time', 'temperature_2m_max', 'temperature_2m_min', 'precipitation_sum']
+2026-02-13 08:28:42,591 [src.Extract] [DEBUG] DataFrame shape: (3, 4), dtypes:
+date              object
+temp_max         float64
+temp_min         float64
+precipitation    float64
+dtype: object
+2026-02-13 08:28:42,592 [__main__] [INFO] [OK] Extract successful: 3 rows extracted
+2026-02-13 08:28:42,592 [__main__] [INFO] --- TRANSFORM PHASE ---
+2026-02-13 08:28:42,593 [src.Transform] [DEBUG] Starting transformation on DataFrame with shape (3, 4)
+2026-02-13 08:28:42,593 [src.Transform] [DEBUG] Input columns: ['date', 'temp_max', 'temp_min', 'precipitation']
+2026-02-13 08:28:42,595 [src.Transform] [DEBUG] Input dtypes:
+date              object
+temp_max         float64
+temp_min         float64
+precipitation    float64
+dtype: object
+2026-02-13 08:28:42,596 [src.Transform] [DEBUG] Created DataFrame copy
+2026-02-13 08:28:42,601 [src.Transform] [DEBUG] Calculated temp_avg: min=27.75, max=28.80, mean=28.13
+2026-02-13 08:28:42,606 [src.Transform] [DEBUG] Temperature distribution:
+{'Hot': 3, 'Cold': 0, 'Mild': 0}
+2026-02-13 08:28:42,608 [src.Transform] [DEBUG] Filled 0 null precipitation values with 0
+2026-02-13 08:28:42,613 [src.Transform] [DEBUG] Converted dates; range: 2026-02-11 00:00:00 to 2026-02-13 00:00:00
+2026-02-13 08:28:42,614 [src.Transform] [INFO] [OK] Transformation complete: 3 rows, 6 columns
+2026-02-13 08:28:42,615 [src.Transform] [DEBUG] Output columns: ['date', 'temp_max', 'temp_min', 'precipitation', 'temp_avg', 'temp_category']
+2026-02-13 08:28:42,618 [src.Transform] [DEBUG] Output dtypes:
+date             datetime64[ns]
+temp_max                float64
+temp_min                float64
+precipitation           float64
+temp_avg                float64
+temp_category          category
+dtype: object
+2026-02-13 08:28:42,619 [__main__] [INFO] [OK] Transform successful: 3 rows transformed
+2026-02-13 08:28:42,619 [__main__] [INFO] --- LOAD PHASE ---
+2026-02-13 08:28:42,620 [src.Load] [DEBUG] Starting load operation with data type: DataFrame
+2026-02-13 08:28:42,620 [src.Load] [DEBUG] Using provided DataFrame with shape (3, 6)
+2026-02-13 08:28:42,622 [src.Load] [DEBUG] DataFrame before processing: shape=(3, 6), columns=['date', 'temp_max', 'temp_min', 'precipitation', 'temp_avg', 'temp_category']
+2026-02-13 08:28:42,624 [src.Load] [DEBUG] Date range: 2026-02-11 00:00:00 to 2026-02-13 00:00:00
+2026-02-13 08:28:42,626 [src.Load] [DEBUG] DataFrame ready for insert: shape=(3, 6), dtypes:
+date             datetime64[ns]
+temp_max                float64
+temp_min                float64
+precipitation           float64
+temp_avg                float64
+temp_category          category
+dtype: object
+2026-02-13 08:28:42,633 [src.Load] [DEBUG] Weather table exists: True
+2026-02-13 08:28:42,655 [src.Load] [INFO] [OK] Loaded 3 rows to weather table
+2026-02-13 08:28:42,655 [src.Load] [DEBUG] Total rows in weather table after load: 3
+2026-02-13 08:28:42,656 [__main__] [INFO] [OK] Load successful: data persisted to weather.db
+2026-02-13 08:28:42,656 [__main__] [INFO] --- REPORT GENERATION PHASE ---
+2026-02-13 08:28:42,657 [src.report] [DEBUG] Starting report generation
+2026-02-13 08:28:42,658 [src.report] [INFO] Input validation passed. Processing 3 rows
+2026-02-13 08:28:42,659 [src.report] [DEBUG] Output directory ensured: C:\Users\RichardAnaneSarfo\Desktop\DevOps\data
+2026-02-13 08:28:42,660 [src.report] [DEBUG] Aggregating data by date
+2026-02-13 08:28:42,673 [src.report] [INFO] Aggregated to 3 daily records
+2026-02-13 08:28:42,674 [src.report] [DEBUG] Report filename: report_2026-02-13.csv
+2026-02-13 08:28:42,683 [src.report] [INFO] Report successfully saved: C:\Users\RichardAnaneSarfo\Desktop\DevOps\data\report_2026-02-13.csv
+2026-02-13 08:28:42,684 [src.report] [DEBUG] Report size: 134 bytes
+2026-02-13 08:28:42,685 [__main__] [INFO] [OK] Report generated successfully: C:\Users\RichardAnaneSarfo\Desktop\DevOps\data\report_2026-02-13.csv
+2026-02-13 08:28:42,685 [__main__] [INFO] --- VERIFICATION PHASE ---
+2026-02-13 08:28:42,687 [__main__] [INFO] Tables in database: ['weather']
+2026-02-13 08:28:42,690 [__main__] [INFO] Total rows in weather table: 24
+2026-02-13 08:28:42,717 [__main__] [DEBUG] Sample (first 5 rows):
+                         date  temp_max  ...  temp_avg  temp_category
+0  2026-02-10 00:00:00.000000      32.0  ...     26.95            Hot
+1  2026-02-10 00:00:00.000000      32.0  ...     26.95            Hot
+2  2026-02-10 00:00:00.000000      32.0  ...     26.95            Hot
+3  2026-02-10 00:00:00.000000      32.0  ...     26.95            Hot
+4  2026-02-10 00:00:00.000000      32.0  ...     26.95            Hot
+
+[5 rows x 6 columns]
+2026-02-13 08:28:42,718 [__main__] [INFO] [OK] Verification successful
+2026-02-13 08:28:42,718 [__main__] [INFO] ================================================================================
+2026-02-13 08:28:42,719 [__main__] [INFO] [OK] Pipeline Execution Completed Successfully
+2026-02-13 08:28:42,720 [__main__] [INFO] ================================================================================
+2026-02-13 08:29:40,139 [__main__] [INFO] ================================================================================
+2026-02-13 08:29:40,139 [__main__] [INFO] Starting Pipeline Execution
+2026-02-13 08:29:40,139 [__main__] [INFO] ================================================================================
+2026-02-13 08:29:40,139 [__main__] [INFO] --- EXTRACT PHASE ---
+2026-02-13 08:29:40,140 [src.Extract] [DEBUG] Starting extraction for lat=6.6271, lon=-1.6278, days=3
+2026-02-13 08:29:40,140 [src.Extract] [INFO] Fetching historical weather data from 2026-02-11 to 2026-02-13...
+2026-02-13 08:29:40,140 [src.Extract] [DEBUG] API URL: https://archive-api.open-meteo.com/v1/archive?latitude=6.6271&longitude=-1.6278&start_date=2026-02-11&end_date=2026-02-13&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=Africa/Accra
+2026-02-13 08:29:40,143 [urllib3.connectionpool] [DEBUG] Starting new HTTPS connection (1): archive-api.open-meteo.com:443
+2026-02-13 08:29:41,284 [urllib3.connectionpool] [DEBUG] https://archive-api.open-meteo.com:443 "GET /v1/archive?latitude=6.6271&longitude=-1.6278&start_date=2026-02-11&end_date=2026-02-13&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=Africa/Accra HTTP/1.1" 200 None
+2026-02-13 08:29:41,285 [src.Extract] [DEBUG] API response status: 200
+2026-02-13 08:29:41,287 [src.Extract] [INFO] [OK] Successfully extracted 3 days of weather data
+2026-02-13 08:29:41,287 [src.Extract] [DEBUG] Columns available: ['time', 'temperature_2m_max', 'temperature_2m_min', 'precipitation_sum']
+2026-02-13 08:29:41,290 [src.Extract] [DEBUG] DataFrame shape: (3, 4), dtypes:
+date              object
+temp_max         float64
+temp_min         float64
+precipitation    float64
+dtype: object
+2026-02-13 08:29:41,291 [__main__] [INFO] [OK] Extract successful: 3 rows extracted
+2026-02-13 08:29:41,291 [__main__] [INFO] --- TRANSFORM PHASE ---
+2026-02-13 08:29:41,291 [src.Transform] [DEBUG] Starting transformation on DataFrame with shape (3, 4)
+2026-02-13 08:29:41,292 [src.Transform] [DEBUG] Input columns: ['date', 'temp_max', 'temp_min', 'precipitation']
+2026-02-13 08:29:41,293 [src.Transform] [DEBUG] Input dtypes:
+date              object
+temp_max         float64
+temp_min         float64
+precipitation    float64
+dtype: object
+2026-02-13 08:29:41,293 [src.Transform] [DEBUG] Created DataFrame copy
+2026-02-13 08:29:41,295 [src.Transform] [DEBUG] Calculated temp_avg: min=27.75, max=28.80, mean=28.13
+2026-02-13 08:29:41,297 [src.Transform] [DEBUG] Temperature distribution:
+{'Hot': 3, 'Cold': 0, 'Mild': 0}
+2026-02-13 08:29:41,298 [src.Transform] [DEBUG] Filled 0 null precipitation values with 0
+2026-02-13 08:29:41,303 [src.Transform] [DEBUG] Converted dates; range: 2026-02-11 00:00:00 to 2026-02-13 00:00:00
+2026-02-13 08:29:41,303 [src.Transform] [INFO] [OK] Transformation complete: 3 rows, 6 columns
+2026-02-13 08:29:41,303 [src.Transform] [DEBUG] Output columns: ['date', 'temp_max', 'temp_min', 'precipitation', 'temp_avg', 'temp_category']
+2026-02-13 08:29:41,305 [src.Transform] [DEBUG] Output dtypes:
+date             datetime64[ns]
+temp_max                float64
+temp_min                float64
+precipitation           float64
+temp_avg                float64
+temp_category          category
+dtype: object
+2026-02-13 08:29:41,305 [__main__] [INFO] [OK] Transform successful: 3 rows transformed
+2026-02-13 08:29:41,305 [__main__] [INFO] --- LOAD PHASE ---
+2026-02-13 08:29:41,305 [src.Load] [DEBUG] Starting load operation with data type: DataFrame
+2026-02-13 08:29:41,306 [src.Load] [DEBUG] Using provided DataFrame with shape (3, 6)
+2026-02-13 08:29:41,306 [src.Load] [DEBUG] DataFrame before processing: shape=(3, 6), columns=['date', 'temp_max', 'temp_min', 'precipitation', 'temp_avg', 'temp_category']
+2026-02-13 08:29:41,307 [src.Load] [DEBUG] Date range: 2026-02-11 00:00:00 to 2026-02-13 00:00:00
+2026-02-13 08:29:41,308 [src.Load] [DEBUG] DataFrame ready for insert: shape=(3, 6), dtypes:
+date             datetime64[ns]
+temp_max                float64
+temp_min                float64
+precipitation           float64
+temp_avg                float64
+temp_category          category
+dtype: object
+2026-02-13 08:29:41,312 [src.Load] [DEBUG] Weather table exists: True
+2026-02-13 08:29:41,329 [src.Load] [INFO] [OK] Loaded 3 rows to weather table
+2026-02-13 08:29:41,330 [src.Load] [DEBUG] Total rows in weather table after load: 3
+2026-02-13 08:29:41,330 [__main__] [INFO] [OK] Load successful: data persisted to weather.db
+2026-02-13 08:29:41,330 [__main__] [INFO] --- REPORT GENERATION PHASE ---
+2026-02-13 08:29:41,331 [src.report] [DEBUG] Starting report generation
+2026-02-13 08:29:41,331 [src.report] [INFO] Input validation passed. Processing 3 rows
+2026-02-13 08:29:41,332 [src.report] [DEBUG] Output directory ensured: C:\Users\RichardAnaneSarfo\Desktop\DevOps\data
+2026-02-13 08:29:41,333 [src.report] [DEBUG] Aggregating data by date
+2026-02-13 08:29:41,337 [src.report] [INFO] Aggregated to 3 daily records
+2026-02-13 08:29:41,338 [src.report] [DEBUG] Report filename: report_2026-02-13.csv
+2026-02-13 08:29:41,341 [src.report] [INFO] Report successfully saved: C:\Users\RichardAnaneSarfo\Desktop\DevOps\data\report_2026-02-13.csv
+2026-02-13 08:29:41,342 [src.report] [DEBUG] Report size: 134 bytes
+2026-02-13 08:29:41,342 [__main__] [INFO] [OK] Report generated successfully: C:\Users\RichardAnaneSarfo\Desktop\DevOps\data\report_2026-02-13.csv
+2026-02-13 08:29:41,343 [__main__] [INFO] --- VERIFICATION PHASE ---
+2026-02-13 08:29:41,344 [__main__] [INFO] Tables in database: ['weather']
+2026-02-13 08:29:41,345 [__main__] [INFO] Total rows in weather table: 27
+2026-02-13 08:29:41,357 [__main__] [DEBUG] Sample (first 5 rows):
+                         date  temp_max  temp_min  precipitation  temp_avg temp_category
+0  2026-02-10 00:00:00.000000      32.0      21.9            6.3     26.95           Hot
+1  2026-02-10 00:00:00.000000      32.0      21.9            6.3     26.95           Hot
+2  2026-02-10 00:00:00.000000      32.0      21.9            6.3     26.95           Hot
+3  2026-02-10 00:00:00.000000      32.0      21.9            6.3     26.95           Hot
+4  2026-02-10 00:00:00.000000      32.0      21.9            6.3     26.95           Hot
+2026-02-13 08:29:41,357 [__main__] [INFO] [OK] Verification successful
+2026-02-13 08:29:41,358 [__main__] [INFO] ================================================================================
+2026-02-13 08:29:41,358 [__main__] [INFO] [OK] Pipeline Execution Completed Successfully
+2026-02-13 08:29:41,358 [__main__] [INFO] ================================================================================
