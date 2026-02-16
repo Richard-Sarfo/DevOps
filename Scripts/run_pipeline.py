@@ -5,15 +5,15 @@ from pathlib import Path
 
 import pandas as pd
 
-from src.extract import extract_weather  # noqa: E402
-from src.load import engine, load_to_sqlite  # noqa: E402
-from src.transform import transform  # noqa: E402
-from src.report import generate_report  # noqa: E402
-
 # Ensure project root (DevOps/) is on sys.path so `src` imports work
 project_root = Path(__file__).resolve().parents[1]
 if str(project_root) not in sys.path:
     sys.path.insert(0, str(project_root))
+
+from src.extract import extract_weather  # noqa: E402
+from src.load import engine, load_to_sqlite  # noqa: E402
+from src.transform import transform  # noqa: E402
+from src.report import generate_report  # noqa: E402
 
 # Configure logging
 log_format = "%(asctime)s [%(name)s] [%(levelname)s] %(message)s"
