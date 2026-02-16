@@ -1,7 +1,8 @@
 """Utility script to view weather.db content"""
 import sqlite3
-import pandas as pd
 from pathlib import Path
+
+import pandas as pd
 
 db_path = Path(__file__).parent.parent / "weather.db"
 
