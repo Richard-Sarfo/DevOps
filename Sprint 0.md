@@ -16,6 +16,7 @@ Weather ETL Pipeline is a reliable, automated data pipeline that fetches, cleans
 | **US06** | As a data engineer, I want the pipeline runnable via one command. | main.py or pipeline.sh runs full pipeline; configurable location | Medium | 2 |
 
 
+
 ## Definition of Done (DoD)
 - Code committed via small PRs (or direct to main with good messages)
 - All tests pass (unit + integration where feasible)
