@@ -2,7 +2,6 @@ import logging
 
 import pandas as pd
 from sqlalchemy import create_engine, text
-from sqlalchemy.orm import sessionmaker
 
 logger = logging.getLogger(__name__)
 
