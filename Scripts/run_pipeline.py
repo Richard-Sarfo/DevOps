@@ -2,13 +2,19 @@ from pathlib import Path
 import sys
 import logging
 import traceback
+import pandas as pd
+
+from src.Extract import extract_weather
+from src.Transform import transform
+from src.Load import load_to_sqlite, engine
+from src.report import generate_report
 
 # Ensure project root (DevOps/) is on sys.path so `src` imports work
 project_root = Path(__file__).resolve().parents[1]
 if str(project_root) not in sys.path:
     sys.path.insert(0, str(project_root))
 
-# Configure logging with more detailed format
+# Configure logging
 log_format = "%(asctime)s [%(name)s] [%(levelname)s] %(message)s"
 logging.basicConfig(
     level=logging.DEBUG,
@@ -18,14 +24,8 @@ logging.basicConfig(
         logging.FileHandler(project_root / "logs" / "pipeline.log")
     ]
 )
+
 logger = logging.getLogger(__name__)
-
-from src.Extract import extract_weather
-from src.Transform import transform
-from src.Load import load_to_sqlite, engine
-from src.report import generate_report
-import pandas as pd
-
 
 def main():
     """Run the complete ETL pipeline with comprehensive logging and error handling"""
