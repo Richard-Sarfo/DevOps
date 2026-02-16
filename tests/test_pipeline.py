@@ -12,10 +12,10 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from src.Extract import extract_weather  # noqa: E402
-from src.Transform import transform  # noqa: E402
-from src.Load import load_to_sqlite, engine  # noqa: E402
-from src.report import generate_report  # noqa: E402
+from src.extract import extract_weather 
+from src.transform import transform 
+from src.load import load_to_sqlite, engine  
+from src.report import generate_report  
 
 # Configure logging for tests
 logging.basicConfig(level=logging.DEBUG)

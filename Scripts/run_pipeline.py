@@ -5,9 +5,9 @@ from pathlib import Path
 
 import pandas as pd
 
-from src.Extract import extract_weather  # noqa: E402
-from src.Load import engine, load_to_sqlite  # noqa: E402
-from src.Transform import transform  # noqa: E402
+from src.extract import extract_weather  # noqa: E402
+from src.load import engine, load_to_sqlite  # noqa: E402
+from src.transform import transform  # noqa: E402
 from src.report import generate_report  # noqa: E402
 
 # Ensure project root (DevOps/) is on sys.path so `src` imports work
