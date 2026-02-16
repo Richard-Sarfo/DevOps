@@ -1,7 +1,8 @@
 import logging
-import requests
-import pandas as pd
 from datetime import datetime, timedelta
+
+import pandas as pd
+import requests
 
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")

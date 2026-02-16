@@ -1,7 +1,8 @@
+import logging
+
+import pandas as pd
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
-import logging
-import pandas as pd
 
 logger = logging.getLogger(__name__)
 
