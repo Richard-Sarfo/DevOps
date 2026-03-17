@@ -28,5 +28,11 @@ Deliver a working basic ETL pipeline: extract weather data from Open-Meteo API a
 - **Commit history showing incremental delivery**  
   ![Commit graph Sprint 1](Screenshots/Screenshot%202026-02-13%20112314.png)
 
+- **March 17 Validation - Extract verification**  
+  ![Extract verification](Screenshots/Screenshot%202026-03-17%20090550.png)
+
+- **March 17 Validation - Data structure check**  
+  ![Data structure](Screenshots/Screenshot%202026-03-17%20090610.png)
+
 **Delivered increment**  
 Basic extract → load pipeline working. Raw weather data is now persistently stored and queryable.

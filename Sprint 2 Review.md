@@ -54,6 +54,24 @@ Enhance logging, add report generation, strengthen testing, and achieve producti
 - **Pipeline completion summary**  
   ![Pipeline completion](Screenshots/Screenshot%202026-02-13%20104028.png)
 
+- **March 17 Validation - Transform execution**  
+  ![Transform execution](Screenshots/Screenshot%202026-03-17%20093910.png)
+
+- **March 17 Validation - Transform completion**  
+  ![Transform completion](Screenshots/Screenshot%202026-03-17%20093935.png)
+
+- **March 17 Validation - Load execution**  
+  ![Load execution](Screenshots/Screenshot%202026-03-17%20094110.png)
+
+- **March 17 Validation - Report generation**  
+  ![Report generation](Screenshots/Screenshot%202026-03-17%20094610.png)
+
+- **March 17 Validation - Pipeline completion**  
+  ![Pipeline final](Screenshots/Screenshot%202026-03-17%20094910.png)
+
+- **Pipeline run summary**  
+  ![Pipeline run](Screenshots/pipeline%20run.png)
+
 - **Report CSV Generated**: `/data/report_2026-02-13.csv`
 - **Execution Log**: `logs/pipeline.log` with complete trace
 - **All unit tests passing** with pytest integration  
