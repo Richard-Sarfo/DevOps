@@ -16,20 +16,17 @@ Deliver a working basic ETL pipeline: extract weather data from Open-Meteo API a
 
 **Evidence / Demo**
 
-- **Pipeline run log**  
-  ![Pipeline run log](logs/pipeline.log)
+- **API extraction output**  
+  ![Extract sample](Screenshots/Screenshot%202026-02-13%20090949.png)
 
-- **Extracted data sample (console / df.head())**  
-  ![Extract sample](Screenshots\Screenshot 2026-02-13 090949.png)
+- **DataFrame structure verification**  
+  ![DataFrame columns](Screenshots/Screenshot%202026-02-13%20090938.png)
 
-- **SQLite table after load**  
-  ![SQLite content](screenshots/sprint1-sqlite-select.png)
-
-- **CI pipeline success**  
-  ![GitHub Actions success](logs/pipeline.log)
+- **SQLite database validation**  
+  ![SQLite content](Screenshots/Screenshot%202026-02-12%20101612.png)
 
 - **Commit history showing incremental delivery**  
-  ![Commit graph Sprint 1](Screenshots/Screenshot 2026-02-13 112314.png)
+  ![Commit graph Sprint 1](Screenshots/Screenshot%202026-02-13%20112314.png)
 
 **Delivered increment**  
 Basic extract → load pipeline working. Raw weather data is now persistently stored and queryable.

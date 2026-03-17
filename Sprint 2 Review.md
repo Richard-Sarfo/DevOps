@@ -37,12 +37,26 @@ Enhance logging, add report generation, strengthen testing, and achieve producti
 - `test_report_missing_columns`: Validates error handling for malformed data  
 - `test_report_empty_data`: Handles empty dataset gracefully  
 
-**Evidence / Demo**  
-- Pipeline execution with full logging output (all phases [OK])  
-- Report CSV generated: `/data/report_2026-02-13.csv`  
-- Database viewer showing 27+ rows of weather data  
-- All unit tests passing with pytest  
-- logs/pipeline.log capturing complete execution trace  
+**Evidence / Demo**
+
+- **Transform phase with temp averaging**  
+  ![Transform output](Screenshots/Screenshot%202026-02-13%20103938.png)
+
+- **Load phase execution**  
+  ![Load output](Screenshots/Screenshot%202026-02-13%20103953.png)
+
+- **Report generation validation**  
+  ![Report output](Screenshots/Screenshot%202026-02-13%20104005.png)
+
+- **Database viewer showing parsed data**  
+  ![Database viewer](Screenshots/Screenshot%202026-02-13%20104018.png)
+
+- **Pipeline completion summary**  
+  ![Pipeline completion](Screenshots/Screenshot%202026-02-13%20104028.png)
+
+- **Report CSV Generated**: `/data/report_2026-02-13.csv`
+- **Execution Log**: `logs/pipeline.log` with complete trace
+- **All unit tests passing** with pytest integration  
 
 **Delivered Increment**  
 Production-ready ETL pipeline: Extract → Transform → Load → Report. Fully logged, tested, and monitored. Ready for automation and scheduling.
